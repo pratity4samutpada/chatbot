@@ -1,12 +1,13 @@
 var ChatBot = {};
+var hasName = false;
 
 //The server path will be used when sending the chat message to the server.
 //todo replace with your server path if needed
-ChatBot.SERVER_PATH = "http://localhost:7000";
+ChatBot.SERVER_PATH = "http://localhost:7003";
 ChatBot.DEFAULT_ANIMATION = "waiting";
 //The animation timeout is used to cut the current running animations when a new animations starts
 ChatBot.animationTimeout;
-//Holds the speech synthesis configuration like language, pich and rate
+//Holds the speech synthesis configuration like language, pitch and rate
 ChatBot.speechConfig;
 //Will be set to false automatically whan the browser does not support speech synthesis
 //Or when the user clicks the mute button
@@ -71,8 +72,8 @@ ChatBot.initSpeechConfig = function () {
     if (ChatBot.speechEnabled) {
         ChatBot.speechConfig = new SpeechSynthesisUtterance();
         ChatBot.speechConfig.lang = 'en-US';
-        ChatBot.speechConfig.rate = 1.6;
-        ChatBot.speechConfig.pitch = 5;
+        ChatBot.speechConfig.rate = 1;
+        ChatBot.speechConfig.pitch = 4;
         ChatBot.speechConfig.onend = function (event) {
             $("#speak-indicator").addClass("hidden");
         }
